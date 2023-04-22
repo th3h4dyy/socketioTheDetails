@@ -1,0 +1,11 @@
+<script>
+  let ws = new WebSocket("ws://localhost:3000");
+  ws.onopen = (event) => {
+    ws.send("welcome from the client!!");
+    console.log(event);
+  };
+
+  ws.onmessage = (event) => {
+    console.log(event.data);
+  };
+</script>

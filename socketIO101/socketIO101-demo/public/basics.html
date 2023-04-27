@@ -1,0 +1,17 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io("http://localhost:3000");
+  socket.on("connect", () => {
+    console.log(socket.id);
+    socket.emit("messageFromClient", { data: "message from client" });
+  });
+
+  socket.on("messageFromServer", (data) => {
+    console.log(data);
+  });
+
+  socket.io.on("reconnect", (data) => {
+    console.log("reconnected");
+    console.log(data);
+  });
+</script>
